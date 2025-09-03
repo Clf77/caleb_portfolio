@@ -354,7 +354,7 @@
 										<div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #333; text-align: center; z-index: 10;">
 											<h4>Loading 3D Model...</h4>
 											<p>Interactive Hybrid Rocket Engine Assembly</p>
-											<p style="font-size: 14px; opacity: 0.8;">Loading your actual rocket engine design...</p>
+											<p style="font-size: 14px; opacity: 0.8;">Loading your updated rocket engine design...</p>
 											<div style="margin-top: 20px;">
 												<button onclick="loadModel()" style="background: #2a5298; color: white; border: 2px solid #2a5298; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Load 3D Model</button>
 											</div>
@@ -364,6 +364,7 @@
 									<div style="margin-top: 15px; text-align: center;">
 										<p><strong>Controls:</strong> Left click + drag to rotate • Right click + drag to pan • Scroll to zoom</p>
 										<button onclick="resetCameraView()" style="background: #2a5298; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Reset View</button>
+										<button onclick="toggleCrossSection()" id="crossSectionBtn" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Show Cross-Section</button>
 										<button onclick="debugModel()" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Debug Model</button>
 										<p><em>This interactive model showcases the complete hybrid rocket engine assembly designed and manufactured at Cornell University.</em></p>
 									</div>
@@ -852,6 +853,8 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 		<script>
 			let scene, camera, renderer, controls;
 			let modelLoaded = false;
+			let crossSectionEnabled = false;
+			let clippingPlane;
 
 			function init3DViewer() {
 				const container = document.getElementById('model-container');
@@ -1048,11 +1051,16 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						// Also try setting position explicitly
 						gltf.scene.position.set(0, 0, 0);
 						
-						// Enable shadows for all meshes
+						// Enable shadows and clipping for all meshes
 						gltf.scene.traverse(function(child) {
 							if (child.isMesh) {
 								child.castShadow = true;
 								child.receiveShadow = true;
+								
+								// Ensure material supports clipping
+								if (child.material) {
+									child.material.clippingPlanes = crossSectionEnabled ? [clippingPlane] : null;
+								}
 							}
 						});
 						
@@ -1090,6 +1098,48 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					controls.target.set(0, 0, 0);
 					controls.update();
 					camera.lookAt(0, 0, 0);
+				}
+			}
+			
+			function toggleCrossSection() {
+				if (!scene) return;
+				
+				crossSectionEnabled = !crossSectionEnabled;
+				const btn = document.getElementById('crossSectionBtn');
+				
+				if (crossSectionEnabled) {
+					// Enable cross-section
+					if (!clippingPlane) {
+						// Create clipping plane (cuts along Y axis)
+						clippingPlane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+					}
+					
+					// Apply clipping plane to all meshes
+					scene.traverse(function(child) {
+						if (child.isMesh) {
+							child.material.clippingPlanes = [clippingPlane];
+							child.material.needsUpdate = true;
+						}
+					});
+					
+					// Enable clipping in renderer
+					renderer.localClippingEnabled = true;
+					
+					btn.textContent = 'Hide Cross-Section';
+					btn.style.background = '#d32f2f';
+				} else {
+					// Disable cross-section
+					scene.traverse(function(child) {
+						if (child.isMesh) {
+							child.material.clippingPlanes = null;
+							child.material.needsUpdate = true;
+						}
+					});
+					
+					renderer.localClippingEnabled = false;
+					
+					btn.textContent = 'Show Cross-Section';
+					btn.style.background = '#666';
 				}
 			}
 			
