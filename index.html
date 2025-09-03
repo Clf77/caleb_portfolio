@@ -990,13 +990,20 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				loadGLBModel();
 			}
 			
-			function loadGLBModel() {
+			function loadGLBModel(useBackup = false) {
 				const loader = new THREE.GLTFLoader();
+				const modelPath = useBackup ? 'portfolio-assets/rocket-engine-backup.glb' : 'portfolio-assets/rocket-engine.glb';
+				
+				// Add timeout for large files
+				const timeout = setTimeout(() => {
+					console.warn('Model loading timeout - file may be too large');
+				}, 30000); // 30 second timeout
 				
 				loader.load(
-					'portfolio-assets/rocket-engine.glb',
+					modelPath,
 					function(gltf) {
 						// Model loaded successfully
+						clearTimeout(timeout);
 						console.log('GLB model loaded successfully');
 						
 						// Clear any existing models
@@ -1080,14 +1087,46 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 					},
 					function(progress) {
 						// Loading progress
-						console.log('Loading progress:', (progress.loaded / progress.total * 100) + '%');
+						const percent = (progress.loaded / progress.total * 100).toFixed(1);
+						console.log('Loading progress:', percent + '%');
+						
+						// Update loading screen with progress
+						const loadingDiv = document.getElementById('loading');
+						if (loadingDiv && progress.total > 0) {
+							const progressText = loadingDiv.querySelector('p:last-of-type');
+							if (progressText) {
+								progressText.textContent = `Loading your updated rocket engine design... ${percent}%`;
+							}
+						}
 					},
 					function(error) {
 						// Loading failed
+						clearTimeout(timeout);
 						console.error('Error loading GLB model:', error);
 						
+						// Try backup file if main file failed
+						if (!useBackup) {
+							console.log('Trying backup model file...');
+							loadGLBModel(true);
+							return;
+						}
+						
+						// Show error message to user
+						const loadingDiv = document.getElementById('loading');
+						if (loadingDiv) {
+							loadingDiv.innerHTML = `
+								<h4>Model Loading Error</h4>
+								<p>Unable to load the 3D model. This may be due to file size or network issues.</p>
+								<div style="margin-top: 20px;">
+									<button onclick="loadModel()" style="background: #2a5298; color: white; border: 2px solid #2a5298; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px;">Retry Loading</button>
+									<button onclick="createPlaceholderModel(); document.getElementById('loading').style.display = 'none';" style="background: #666; color: white; border: 2px solid #666; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 5px;">Show Placeholder</button>
+								</div>
+								<p style="font-size: 12px; margin-top: 10px; color: #666;">Error: ${error.message || 'Unknown error'}</p>
+							`;
+						}
+						
 						// Fallback to placeholder model
-						createPlaceholderModel();
+						// createPlaceholderModel();
 					}
 				);
 			}
