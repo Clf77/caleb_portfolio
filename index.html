@@ -364,6 +364,7 @@
 									<div style="margin-top: 15px; text-align: center;">
 										<p><strong>Controls:</strong> Left click + drag to rotate • Right click + drag to pan • Scroll to zoom</p>
 										<button onclick="resetCameraView()" style="background: #2a5298; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Reset View</button>
+										<button onclick="debugModel()" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Debug Model</button>
 										<p><em>This interactive model showcases the complete hybrid rocket engine assembly designed and manufactured at Cornell University.</em></p>
 									</div>
 								</div>
@@ -861,7 +862,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 				
 				// Camera setup
 				camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
-				camera.position.set(3, 3, 3);
+				camera.position.set(1, 1, 1);
 				
 				// Renderer setup
 				renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -1025,12 +1026,27 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 						// Center the model at origin
 						gltf.scene.position.sub(center);
 						
-						// Scale the model to fit nicely in view
+						// More aggressive scaling - try different approaches
 						const maxDim = Math.max(size.x, size.y, size.z);
-						const scale = 2 / maxDim; // Smaller scale for better fit
-						gltf.scene.scale.setScalar(scale);
+						console.log('Max dimension:', maxDim);
 						
+						// Try much more aggressive scaling
+						let scale;
+						if (maxDim > 1000) {
+							scale = 0.001; // Very large model
+						} else if (maxDim > 100) {
+							scale = 0.01; // Large model
+						} else if (maxDim > 10) {
+							scale = 0.1; // Medium model
+						} else {
+							scale = 1; // Small model
+						}
+						
+						gltf.scene.scale.setScalar(scale);
 						console.log('Applied scale:', scale);
+						
+						// Also try setting position explicitly
+						gltf.scene.position.set(0, 0, 0);
 						
 						// Enable shadows for all meshes
 						gltf.scene.traverse(function(child) {
@@ -1040,13 +1056,17 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 							}
 						});
 						
-						// Set camera position closer to the model
-						camera.position.set(3, 3, 3);
+						// Set camera position much closer to the model
+						camera.position.set(1, 1, 1);
 						controls.target.set(0, 0, 0);
 						controls.update();
 						
 						// Reset camera to look at the model
 						camera.lookAt(0, 0, 0);
+						
+						// Update controls limits for closer viewing
+						controls.minDistance = 0.1;
+						controls.maxDistance = 10;
 						
 						modelLoaded = true;
 					},
@@ -1066,10 +1086,32 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			
 			function resetCameraView() {
 				if (camera && controls) {
-					camera.position.set(3, 3, 3);
+					camera.position.set(1, 1, 1);
 					controls.target.set(0, 0, 0);
 					controls.update();
 					camera.lookAt(0, 0, 0);
+				}
+			}
+			
+			function debugModel() {
+				if (scene && scene.children.length > 0) {
+					scene.traverse(function(child) {
+						if (child.isMesh) {
+							console.log('Mesh found:', child.name, 'Position:', child.position, 'Scale:', child.scale);
+						}
+					});
+					
+					// Get scene bounding box
+					const box = new THREE.Box3().setFromObject(scene);
+					const center = box.getCenter(new THREE.Vector3());
+					const size = box.getSize(new THREE.Vector3());
+					
+					console.log('Scene center:', center);
+					console.log('Scene size:', size);
+					console.log('Camera position:', camera.position);
+					console.log('Camera target:', controls.target);
+				} else {
+					console.log('No scene or children found');
 				}
 			}
 			
