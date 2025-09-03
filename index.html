@@ -10,6 +10,10 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- Three.js for 3D model viewer -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 	</head>
 	<body class="is-preload">
 
@@ -340,6 +344,50 @@
 								</div>
 							</div>
 						</article>
+						
+						<!-- Interactive 3D Model -->
+						<article class="work-item">
+							<h3>Interactive 3D Model - Hybrid Rocket Engine Assembly</h3>
+							<div class="row">
+								<div class="col-12">
+									<div id="model-viewer" style="width: 100%; height: 600px; border: 2px solid #333; border-radius: 8px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); position: relative; overflow: hidden;">
+										<div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; z-index: 10;">
+											<h4>Loading 3D Model...</h4>
+											<p>Interactive Hybrid Rocket Engine Assembly</p>
+											<div style="margin-top: 20px;">
+												<button onclick="loadModel()" style="background: #2a5298; color: white; border: 2px solid white; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Load 3D Model</button>
+											</div>
+										</div>
+										<div id="model-container" style="width: 100%; height: 100%; position: relative;"></div>
+									</div>
+									<div style="margin-top: 15px; text-align: center;">
+										<p><strong>Controls:</strong> Left click + drag to rotate • Right click + drag to pan • Scroll to zoom</p>
+										<p><em>This interactive model showcases the complete hybrid rocket engine assembly designed and manufactured at Cornell University.</em></p>
+									</div>
+								</div>
+							</div>
+							
+							<h4>Model Components:</h4>
+							<div class="row">
+								<div class="col-6 col-12-xsmall">
+									<ul>
+										<li><strong>Injector Assembly:</strong> N2O oxidizer injection system</li>
+										<li><strong>Combustion Chamber:</strong> Hybrid fuel grain housing</li>
+										<li><strong>Nozzle Assembly:</strong> Thrust generation and exhaust</li>
+										<li><strong>Retention Ring:</strong> Nozzle mounting and sealing</li>
+									</ul>
+								</div>
+								<div class="col-6 col-12-xsmall">
+									<ul>
+										<li><strong>Oxidizer Tank:</strong> Liquid N2O storage vessel</li>
+										<li><strong>Bulkhead Assembly:</strong> Pressure vessel end caps</li>
+										<li><strong>Fluid Connections:</strong> Piping and valve interfaces</li>
+										<li><strong>Mounting Hardware:</strong> Test stand integration</li>
+									</ul>
+								</div>
+							</div>
+						</article>
+						
 						<ul class="actions">
 							<li><a href="#three" class="button">View Skills</a></li>
 							<li><a href="#four" class="button">Get In Touch</a></li>
@@ -796,6 +844,160 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+		<!-- 3D Model Viewer Script -->
+		<script>
+			let scene, camera, renderer, controls;
+			let modelLoaded = false;
+
+			function init3DViewer() {
+				const container = document.getElementById('model-container');
+				
+				// Scene setup
+				scene = new THREE.Scene();
+				scene.background = new THREE.Color(0x1a1a2e);
+				
+				// Camera setup
+				camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+				camera.position.set(5, 5, 5);
+				
+				// Renderer setup
+				renderer = new THREE.WebGLRenderer({ antialias: true });
+				renderer.setSize(container.clientWidth, container.clientHeight);
+				renderer.shadowMap.enabled = true;
+				renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+				container.appendChild(renderer.domElement);
+				
+				// Controls
+				controls = new THREE.OrbitControls(camera, renderer.domElement);
+				controls.enableDamping = true;
+				controls.dampingFactor = 0.05;
+				controls.enableZoom = true;
+				controls.enablePan = true;
+				
+				// Lighting
+				const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+				scene.add(ambientLight);
+				
+				const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+				directionalLight.position.set(10, 10, 5);
+				directionalLight.castShadow = true;
+				scene.add(directionalLight);
+				
+				const pointLight = new THREE.PointLight(0xffffff, 0.5);
+				pointLight.position.set(-10, -10, -5);
+				scene.add(pointLight);
+				
+				// Create a placeholder model (geometric representation)
+				createPlaceholderModel();
+				
+				// Start render loop
+				animate();
+				
+				// Handle window resize
+				window.addEventListener('resize', onWindowResize);
+			}
+			
+			function createPlaceholderModel() {
+				// Create a simplified representation of the rocket engine
+				const group = new THREE.Group();
+				
+				// Main body (combustion chamber)
+				const bodyGeometry = new THREE.CylinderGeometry(0.8, 0.8, 3, 16);
+				const bodyMaterial = new THREE.MeshPhongMaterial({ 
+					color: 0x888888,
+					shininess: 100,
+					transparent: true,
+					opacity: 0.9
+				});
+				const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+				body.position.y = 0;
+				body.castShadow = true;
+				group.add(body);
+				
+				// Injector assembly
+				const injectorGeometry = new THREE.CylinderGeometry(0.3, 0.3, 0.5, 12);
+				const injectorMaterial = new THREE.MeshPhongMaterial({ 
+					color: 0x4444ff,
+					shininess: 150
+				});
+				const injector = new THREE.Mesh(injectorGeometry, injectorMaterial);
+				injector.position.y = 1.75;
+				injector.castShadow = true;
+				group.add(injector);
+				
+				// Nozzle
+				const nozzleGeometry = new THREE.CylinderGeometry(0.2, 0.6, 1, 12);
+				const nozzleMaterial = new THREE.MeshPhongMaterial({ 
+					color: 0xff4444,
+					shininess: 200
+				});
+				const nozzle = new THREE.Mesh(nozzleGeometry, nozzleMaterial);
+				nozzle.position.y = -1.75;
+				nozzle.castShadow = true;
+				group.add(nozzle);
+				
+				// Oxidizer tank
+				const tankGeometry = new THREE.CylinderGeometry(0.6, 0.6, 2, 16);
+				const tankMaterial = new THREE.MeshPhongMaterial({ 
+					color: 0x44ff44,
+					shininess: 100,
+					transparent: true,
+					opacity: 0.8
+				});
+				const tank = new THREE.Mesh(tankGeometry, tankMaterial);
+				tank.position.y = 3.5;
+				tank.castShadow = true;
+				group.add(tank);
+				
+				// Piping connections
+				const pipeGeometry = new THREE.CylinderGeometry(0.1, 0.1, 1, 8);
+				const pipeMaterial = new THREE.MeshPhongMaterial({ color: 0xffff44 });
+				
+				for (let i = 0; i < 4; i++) {
+					const pipe = new THREE.Mesh(pipeGeometry, pipeMaterial);
+					const angle = (i / 4) * Math.PI * 2;
+					pipe.position.x = Math.cos(angle) * 0.9;
+					pipe.position.z = Math.sin(angle) * 0.9;
+					pipe.position.y = 2.5;
+					pipe.rotation.z = Math.PI / 2;
+					pipe.castShadow = true;
+					group.add(pipe);
+				}
+				
+				scene.add(group);
+				modelLoaded = true;
+			}
+			
+			function loadModel() {
+				// This function will load the actual GLB/GLTF model
+				// For now, it just hides the loading screen
+				document.getElementById('loading').style.display = 'none';
+				
+				if (!modelLoaded) {
+					init3DViewer();
+				}
+			}
+			
+			function animate() {
+				requestAnimationFrame(animate);
+				controls.update();
+				renderer.render(scene, camera);
+			}
+			
+			function onWindowResize() {
+				const container = document.getElementById('model-container');
+				camera.aspect = container.clientWidth / container.clientHeight;
+				camera.updateProjectionMatrix();
+				renderer.setSize(container.clientWidth, container.clientHeight);
+			}
+			
+			// Initialize when page loads
+			document.addEventListener('DOMContentLoaded', function() {
+				// Auto-load the model after a short delay
+				setTimeout(loadModel, 1000);
+			});
+		</script>
 
 	</body>
 </html>
