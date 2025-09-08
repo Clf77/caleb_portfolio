@@ -2557,6 +2557,36 @@ input, select, textarea {
 
 	.work-item {
 		margin: 0 0 2em 0;
+		background: rgba(255, 255, 255, 0.05);
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 16px;
+		padding: 2em;
+		box-shadow: 
+			0 8px 32px rgba(0, 0, 0, 0.1),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.work-item::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+	}
+
+	.work-item:hover {
+		transform: translateY(-2px);
+		box-shadow: 
+			0 12px 40px rgba(0, 0, 0, 0.15),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+		border-color: rgba(255, 255, 255, 0.2);
 	}
 
 		.work-item .image {
@@ -2564,14 +2594,18 @@ input, select, textarea {
 		}
 
 		.work-item h3 {
-			font-size: 1em;
-			margin: 0 0 0.5em 0;
+			font-size: 1.2em;
+			margin: 0 0 1em 0;
+			color: #ffffff;
+			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			font-weight: 600;
 		}
 
 		.work-item p {
-			font-size: 0.8em;
-			line-height: 1.5em;
-			margin: 0;
+			font-size: 0.9em;
+			line-height: 1.6em;
+			margin: 0 0 0.8em 0;
+			color: rgba(255, 255, 255, 0.9);
 		}
 
 /* Header */
