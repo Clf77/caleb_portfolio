@@ -21,8 +21,8 @@
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="Caleb Farrelly avatar" /></a>
-					<h1><strong>I am Caleb Farrelly</strong>, a Master's student at Cornell University <br />
-						studying Aerospace Engineering (expected Dec. 2025)
+					<h1><strong>I'm Caleb Farrelly</strong>, a Master's student at Cornell University <br />
+						studying Aerospace Engineering
 				</div>
 			</header>
 
@@ -48,6 +48,43 @@
 					<section id="two">
 						<h2>Major Projects & Experience</h2>
 						
+						<!-- Liquid Rocket Engine -->
+						<article class="work-item">
+							<h3>1250 lbf Regeneratively Cooled Bipropellant Rocket Engine</h3>
+							<div class="row">
+								<div class="col-12">
+									<div id="model-viewer" style="width: 100%; height: 600px; border: 2px solid #333; border-radius: 8px; background: #ffffff; position: relative; overflow: hidden;">
+										<div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #333; text-align: center; z-index: 10;">
+											<h4>Loading 3D Model...</h4>
+											<p>Interactive Liquid Rocket Engine Assembly</p>
+											<p style="font-size: 14px; opacity: 0.8;">Loading your updated rocket engine design...</p>
+											<div style="margin-top: 20px;">
+												<button onclick="loadModel()" style="background: #2a5298; color: white; border: 2px solid #2a5298; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Load 3D Model</button>
+											</div>
+										</div>
+										<div id="model-container" style="width: 100%; height: 100%; position: relative;"></div>
+									</div>
+									<div style="margin-top: 15px; text-align: center;">
+										<p><strong>Controls:</strong> Left click + drag to rotate • Right click + drag to pan • Scroll to zoom</p>
+										<button onclick="resetCameraView()" style="background: #2a5298; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Reset View</button>
+										<button onclick="toggleCrossSection()" id="crossSectionBtn" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Show Cross-Section</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="row">
+								<div class="col-12">
+									<p><strong>Engine Type:</strong> Ethanol/N2O regeneratively cooled bipropellant</p>
+									<p><strong>Thrust:</strong> 1,250 lbf - Cornell's first liquid bipropellant engine</p>
+									<p><strong>Analysis:</strong> Fluent CFD and ANSYS structural/thermal modeling</p>
+									<p><strong>Manufacturing:</strong> AlSi10Mg additive manufacturing</p>
+									<ul class="actions">
+										<li><a href="liquid-rocket-engine.html" class="button primary">View Full Project Details</a></li>
+									</ul>
+								</div>
+							</div>
+						</article>
+
 						<!-- Hybrid Rocket Test Stand -->
 						<article class="work-item">
 							<h3>Hybrid Rocket Test Stand - Cornell Rocketry Team</h3>
@@ -83,43 +120,6 @@
 									<ul class="actions">
 										<li><a href="hybrid-rocket-engines.html" class="button primary">View Full Project Details</a></li>
 							</ul>
-								</div>
-							</div>
-						</article>
-
-						<!-- Liquid Rocket Engine -->
-						<article class="work-item">
-							<h3>1250 lbf Regeneratively Cooled Bipropellant Rocket Engine</h3>
-							<div class="row">
-								<div class="col-12">
-									<div id="model-viewer" style="width: 100%; height: 600px; border: 2px solid #333; border-radius: 8px; background: #ffffff; position: relative; overflow: hidden;">
-										<div id="loading" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #333; text-align: center; z-index: 10;">
-											<h4>Loading 3D Model...</h4>
-											<p>Interactive Liquid Rocket Engine Assembly</p>
-											<p style="font-size: 14px; opacity: 0.8;">Loading your updated rocket engine design...</p>
-											<div style="margin-top: 20px;">
-												<button onclick="loadModel()" style="background: #2a5298; color: white; border: 2px solid #2a5298; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px;">Load 3D Model</button>
-											</div>
-										</div>
-										<div id="model-container" style="width: 100%; height: 100%; position: relative;"></div>
-									</div>
-									<div style="margin-top: 15px; text-align: center;">
-										<p><strong>Controls:</strong> Left click + drag to rotate • Right click + drag to pan • Scroll to zoom</p>
-										<button onclick="resetCameraView()" style="background: #2a5298; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Reset View</button>
-										<button onclick="toggleCrossSection()" id="crossSectionBtn" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Show Cross-Section</button>
-									</div>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-12">
-									<p><strong>Engine Type:</strong> Ethanol/N2O regeneratively cooled bipropellant</p>
-									<p><strong>Thrust:</strong> 1,250 lbf - Cornell's first liquid bipropellant engine</p>
-									<p><strong>Analysis:</strong> Fluent CFD and ANSYS structural/thermal modeling</p>
-									<p><strong>Manufacturing:</strong> AlSi10Mg additive manufacturing</p>
-									<ul class="actions">
-										<li><a href="liquid-rocket-engine.html" class="button primary">View Full Project Details</a></li>
-									</ul>
 								</div>
 							</div>
 						</article>
@@ -169,7 +169,38 @@
 					</section>
 
 				<!-- Three -->
-					<!-- INSERT_YOUR_REWRITE_HERE -->
+					<section id="three">
+						<h2>Technical Skills & Expertise</h2>
+						<div class="row">
+							<div class="col-6 col-12-xsmall">
+								<h3>Software & Tools</h3>
+								<ul>
+									<li><strong>CAD/CAM:</strong> NX, SolidWorks, Fusion 360</li>
+									<li><strong>Analysis:</strong> ANSYS Mechanical & Fluent CFD, MATLAB</li>
+									<li><strong>Electronics:</strong> Altium Designer</li>
+									<li><strong>Documentation:</strong> LaTeX</li>
+								</ul>
+							</div>
+							<div class="col-6 col-12-xsmall">
+								<h3>Manufacturing & Hands-On</h3>
+								<ul>
+									<li><strong>Machining:</strong> CNC mill & lathe operation</li>
+									<li><strong>Fabrication:</strong> Welding, soldering, additive manufacturing</li>
+									<li><strong>Systems:</strong> Fluid system design & analysis, cryogenics</li>
+									<li><strong>Assembly:</strong> Harnessing, mechanical assembly</li>
+								</ul>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<h3>Core Competencies</h3>
+								<p><strong>Propulsion Systems:</strong> Hybrid and liquid rocket engine design, combustion analysis, regenerative cooling, injector design</p>
+								<p><strong>Project Leadership:</strong> Team management, technical oversight, timeline coordination, resource allocation</p>
+								<p><strong>Engineering Analysis:</strong> CFD simulation, structural analysis, thermal modeling, performance optimization</p>
+								<p><strong>Manufacturing:</strong> Design for manufacturability, CNC programming, quality control, process optimization</p>
+							</div>
+						</div>
+					</section>
 
 				<!-- Four -->
 					<section id="four">
