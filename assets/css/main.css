@@ -2556,19 +2556,22 @@ input, select, textarea {
 /* Work Item */
 
 	.work-item {
-		margin: 0 0 2em 0;
-		background: rgba(255, 255, 255, 0.05);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border-radius: 16px;
-		padding: 2em;
+		margin: 0 0 3em 0;
+		background: rgba(255, 255, 255, 0.15);
+		backdrop-filter: blur(15px);
+		-webkit-backdrop-filter: blur(15px);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 20px;
+		padding: 2.5em;
 		box-shadow: 
-			0 8px 32px rgba(0, 0, 0, 0.1),
-			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+			0 8px 32px rgba(0, 0, 0, 0.2),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
 		transition: all 0.3s ease;
 		position: relative;
 		overflow: hidden;
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
 	}
 
 	.work-item::before {
@@ -2596,8 +2599,8 @@ input, select, textarea {
 		.work-item h3 {
 			font-size: 1.2em;
 			margin: 0 0 1em 0;
-			color: #ffffff;
-			text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+			color: #2c3e50;
+			text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 			font-weight: 600;
 		}
 
@@ -2605,7 +2608,41 @@ input, select, textarea {
 			font-size: 0.9em;
 			line-height: 1.6em;
 			margin: 0 0 0.8em 0;
-			color: rgba(255, 255, 255, 0.9);
+			color: #34495e;
+		}
+
+		.work-item .button {
+			background: rgba(255, 255, 255, 0.2);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			border-radius: 12px;
+			color: #2c3e50 !important;
+			text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+			box-shadow: 
+				0 4px 16px rgba(0, 0, 0, 0.1),
+				inset 0 1px 0 rgba(255, 255, 255, 0.4);
+			transition: all 0.3s ease;
+		}
+
+		.work-item .button:hover {
+			background: rgba(255, 255, 255, 0.3);
+			border-color: rgba(255, 255, 255, 0.5);
+			transform: translateY(-1px);
+			box-shadow: 
+				0 6px 20px rgba(0, 0, 0, 0.15),
+				inset 0 1px 0 rgba(255, 255, 255, 0.6);
+		}
+
+		.work-item .button.primary {
+			background: rgba(73, 191, 157, 0.2);
+			border-color: rgba(73, 191, 157, 0.4);
+			color: #2c3e50 !important;
+		}
+
+		.work-item .button.primary:hover {
+			background: rgba(73, 191, 157, 0.3);
+			border-color: rgba(73, 191, 157, 0.6);
 		}
 
 /* Header */
