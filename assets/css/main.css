@@ -2648,10 +2648,31 @@ input, select, textarea {
 	/* Ensure proper spacing for work-item elements in project pages */
 	.row .work-item {
 		margin-bottom: 3em !important;
+		margin-left: 1em !important;
+		margin-right: 1em !important;
+	}
+
+	.row .work-item:first-child {
+		margin-left: 0 !important;
 	}
 
 	.row .work-item:last-child {
 		margin-bottom: 0 !important;
+		margin-right: 0 !important;
+	}
+
+	/* Add spacing between columns */
+	.row .col-6 {
+		padding-left: 0.5em;
+		padding-right: 0.5em;
+	}
+
+	.row .col-6:first-child {
+		padding-left: 0;
+	}
+
+	.row .col-6:last-child {
+		padding-right: 0;
 	}
 
 /* Header */
