@@ -1,0 +1,44 @@
+#mainContainer {
+  transition-property: top, left !important;
+  top: -32px;
+}
+
+#mainContainer #toolbarContainer {
+  box-shadow: none;
+}
+
+#mainContainer #secondaryToolbar {
+  display: none;
+}
+
+#mainContainer:hover, #mainContainer:focus-within {
+  top: 0;
+}
+
+#mainContainer:hover #secondaryToolbar {
+  display: inherit;
+}
+
+#mainContainer:hover #toolbarContainer {
+  box-shadow: inset 1px 0 0 hsla(0,0%,100%,.08),
+              inset 0 1px 1px hsla(0,0%,0%,.15),
+              inset 0 -1px 0 hsla(0,0%,100%,.05),
+              0 1px 0 hsla(0,0%,0%,.15),
+              0 1px 1px hsla(0,0%,0%,.1);
+}
+
+.toolbarButton:focus, #scaleSelectContainer:focus-within {
+  outline: 2px solid #5d92c3 !important;
+}
+
+.secondaryToolbarButton:focus {
+  border: 2px solid #5d92c3;
+}
+
+#mainContainer:focus-within #secondaryToolbar:not(.hidden) {
+  display: block !important;
+}
+
+.pdfViewer .page {
+  border: 0;
+}

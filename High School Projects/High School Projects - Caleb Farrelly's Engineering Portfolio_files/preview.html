@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!-- saved from url=(0349)https://assets.digication.com/filemanager/pdfjs/web/viewer.html?file=https%3A%2F%2Fcdn.files.digication.com%2Fv39JHlk0Sia7gH7u6VlQ%3Fpolicy%3DeyJoYW5kbGUiOiJ2MzlKSGxrMFNpYTdnSDd1NlZsUSIsImNhbGwiOlsicmVhZCIsImNvbnZlcnQiXSwiZXhwaXJ5IjoxNzU3OTcwNzk0fQ%3D%3D%26signature%3D7de3cab4a51705bcac26249099182014abc0fa3b5b463b3db9ac10b40857a871#zoom=page-width -->
+<html lang="en" dir="ltr" mozdisallowselectionprint="" moznomarginboxes=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PDF.js viewer</title>
+
+
+    <link rel="stylesheet" href="./viewer.css">
+
+    <!-- override -->
+    <link rel="stylesheet" href="./pdfjs-viewer.css">
+
+    <script src="./compatibility.js"></script>
+
+
+
+<!-- This snippet is used in production (included from viewer.html) -->
+<link rel="resource" type="application/l10n" href="https://assets.digication.com/filemanager/pdfjs/web/locale/locale.properties">
+<script src="./l10n.js"></script>
+<script src="./pdf.js"></script>
+
+
+
+    <script src="./debugger.js"></script>
+    <script src="./viewer.js"></script>
+
+    <!-- override -->
+    <script src="./pdfjs-viewer.js"></script>
+
+  </head>
+
+  <body tabindex="1" class="">
+    <div id="outerContainer">
+
+      <div id="sidebarContainer">
+        <div id="toolbarSidebar">
+          <div class="splitToolbarButton toggled">
+            <button id="viewThumbnail" class="toolbarButton group toggled" title="Show Thumbnails" tabindex="2" data-l10n-id="thumbs">
+               <span data-l10n-id="thumbs_label">Thumbnails</span>
+            </button>
+            <button id="viewOutline" class="toolbarButton group" title="Show Document Outline" tabindex="3" data-l10n-id="outline" disabled="">
+               <span data-l10n-id="outline_label">Document Outline</span>
+            </button>
+            <button id="viewAttachments" class="toolbarButton group" title="Show Attachments" tabindex="4" data-l10n-id="attachments" disabled="">
+               <span data-l10n-id="attachments_label">Attachments</span>
+            </button>
+          </div>
+        </div>
+        <div id="sidebarContent">
+          <div id="thumbnailView">
+          <a href="https://assets.digication.com/filemanager/pdfjs/web/viewer.html?file=https%3A%2F%2Fcdn.files.digication.com%2Fv39JHlk0Sia7gH7u6VlQ%3Fpolicy%3DeyJoYW5kbGUiOiJ2MzlKSGxrMFNpYTdnSDd1NlZsUSIsImNhbGwiOlsicmVhZCIsImNvbnZlcnQiXSwiZXhwaXJ5IjoxNzU3OTcwNzk0fQ%3D%3D%26signature%3D7de3cab4a51705bcac26249099182014abc0fa3b5b463b3db9ac10b40857a871#page=1" title="Page 1"><div id="thumbnailContainer1" class="thumbnail selected"><div class="thumbnailSelectionRing" style="width: 100px; height: 75px;"></div></div></a></div>
+          <div id="outlineView" class="hidden"></div>
+          <div id="attachmentsView" class="hidden"></div>
+        </div>
+      </div>  <!-- sidebarContainer -->
+
+      <div id="mainContainer">
+        <div class="findbar hidden doorHanger hiddenSmallView" id="findbar">
+          <label for="findInput" class="toolbarLabel" data-l10n-id="find_label">Find:</label>
+          <input id="findInput" class="toolbarField" tabindex="91">
+          <div class="splitToolbarButton">
+            <button class="toolbarButton findPrevious" title="Find the previous occurrence of the phrase" id="findPrevious" tabindex="92" data-l10n-id="find_previous">
+              <span data-l10n-id="find_previous_label">Previous</span>
+            </button>
+            <div class="splitToolbarButtonSeparator"></div>
+            <button class="toolbarButton findNext" title="Find the next occurrence of the phrase" id="findNext" tabindex="93" data-l10n-id="find_next">
+              <span data-l10n-id="find_next_label">Next</span>
+            </button>
+          </div>
+          <input type="checkbox" id="findHighlightAll" class="toolbarField" tabindex="94">
+          <label for="findHighlightAll" class="toolbarLabel" data-l10n-id="find_highlight">Highlight all</label>
+          <input type="checkbox" id="findMatchCase" class="toolbarField" tabindex="95">
+          <label for="findMatchCase" class="toolbarLabel" data-l10n-id="find_match_case_label">Match case</label>
+          <span id="findResultsCount" class="toolbarLabel hidden"></span>
+          <span id="findMsg" class="toolbarLabel"></span>
+        </div>  <!-- findbar -->
+
+        <div id="secondaryToolbar" class="secondaryToolbar hidden doorHangerRight">
+          <div id="secondaryToolbarButtonContainer" style="max-height: 755px;">
+            <button id="secondaryPresentationMode" class="secondaryToolbarButton presentationMode visibleLargeView" title="Switch to Presentation Mode" tabindex="51" data-l10n-id="presentation_mode">
+              <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+            </button>
+
+            <button id="secondaryOpenFile" class="secondaryToolbarButton openFile visibleLargeView" title="Open File" tabindex="52" data-l10n-id="open_file">
+              <span data-l10n-id="open_file_label">Open</span>
+            </button>
+
+            <button id="secondaryPrint" class="secondaryToolbarButton print visibleMediumView" title="Print" tabindex="53" data-l10n-id="print">
+              <span data-l10n-id="print_label">Print</span>
+            </button>
+
+            <button id="secondaryDownload" class="secondaryToolbarButton download visibleMediumView" title="Download" tabindex="54" data-l10n-id="download">
+              <span data-l10n-id="download_label">Download</span>
+            </button>
+
+            <a href="https://assets.digication.com/filemanager/pdfjs/web/viewer.html?file=https%3A%2F%2Fcdn.files.digication.com%2Fv39JHlk0Sia7gH7u6VlQ%3Fpolicy%3DeyJoYW5kbGUiOiJ2MzlKSGxrMFNpYTdnSDd1NlZsUSIsImNhbGwiOlsicmVhZCIsImNvbnZlcnQiXSwiZXhwaXJ5IjoxNzU3OTcwNzk0fQ%3D%3D%26signature%3D7de3cab4a51705bcac26249099182014abc0fa3b5b463b3db9ac10b40857a871#page=1&amp;zoom=page-width,0,2595" id="secondaryViewBookmark" class="secondaryToolbarButton bookmark visibleSmallView" title="Current view (copy or open in new window)" tabindex="55" data-l10n-id="bookmark">
+              <span data-l10n-id="bookmark_label">Current View</span>
+            </a>
+
+            <div class="horizontalToolbarSeparator visibleLargeView"></div>
+
+            <button id="firstPage" class="secondaryToolbarButton firstPage" title="Go to First Page" tabindex="56" data-l10n-id="first_page" disabled="">
+              <span data-l10n-id="first_page_label">Go to First Page</span>
+            </button>
+            <button id="lastPage" class="secondaryToolbarButton lastPage" title="Go to Last Page" tabindex="57" data-l10n-id="last_page" disabled="">
+              <span data-l10n-id="last_page_label">Go to Last Page</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="pageRotateCw" class="secondaryToolbarButton rotateCw" title="Rotate Clockwise" tabindex="58" data-l10n-id="page_rotate_cw">
+              <span data-l10n-id="page_rotate_cw_label">Rotate Clockwise</span>
+            </button>
+            <button id="pageRotateCcw" class="secondaryToolbarButton rotateCcw" title="Rotate Counterclockwise" tabindex="59" data-l10n-id="page_rotate_ccw">
+              <span data-l10n-id="page_rotate_ccw_label">Rotate Counterclockwise</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="toggleHandTool" class="secondaryToolbarButton handTool" title="Enable hand tool" tabindex="60" data-l10n-id="hand_tool_enable">
+              <span data-l10n-id="hand_tool_enable_label">Enable hand tool</span>
+            </button>
+
+            <div class="horizontalToolbarSeparator"></div>
+
+            <button id="documentProperties" class="secondaryToolbarButton documentProperties" title="Document Properties…" tabindex="61" data-l10n-id="document_properties">
+              <span data-l10n-id="document_properties_label">Document Properties…</span>
+            </button>
+          </div>
+        </div>  <!-- secondaryToolbar -->
+
+        <div class="toolbar">
+          <div id="toolbarContainer">
+            <div id="toolbarViewer">
+              <div id="toolbarViewerLeft">
+                <button id="sidebarToggle" class="toolbarButton" title="Toggle Sidebar" tabindex="11" data-l10n-id="toggle_sidebar">
+                  <span data-l10n-id="toggle_sidebar_label">Toggle Sidebar</span>
+                </button>
+                <div class="toolbarButtonSpacer"></div>
+                <button id="viewFind" class="toolbarButton group hiddenSmallView" title="Find in Document" tabindex="12" data-l10n-id="findbar">
+                   <span data-l10n-id="findbar_label">Find</span>
+                </button>
+                <div class="splitToolbarButton">
+                  <button class="toolbarButton pageUp" title="Previous Page" id="previous" tabindex="13" data-l10n-id="previous" disabled="">
+                    <span data-l10n-id="previous_label">Previous</span>
+                  </button>
+                  <div class="splitToolbarButtonSeparator"></div>
+                  <button class="toolbarButton pageDown" title="Next Page" id="next" tabindex="14" data-l10n-id="next" disabled="">
+                    <span data-l10n-id="next_label">Next</span>
+                  </button>
+                </div>
+                <label id="pageNumberLabel" class="toolbarLabel" for="pageNumber" data-l10n-id="page_label">Page:</label>
+                <input type="number" id="pageNumber" class="toolbarField pageNumber" value="1" size="4" min="1" tabindex="15" max="1">
+                <span id="numPages" class="toolbarLabel">of 1</span>
+              </div>
+              <div id="toolbarViewerRight">
+                <button id="presentationMode" class="toolbarButton presentationMode hiddenLargeView" title="Switch to Presentation Mode" tabindex="31" data-l10n-id="presentation_mode">
+                  <span data-l10n-id="presentation_mode_label">Presentation Mode</span>
+                </button>
+
+                <button id="openFile" class="toolbarButton openFile hiddenLargeView" title="Open File" tabindex="32" data-l10n-id="open_file">
+                  <span data-l10n-id="open_file_label">Open</span>
+                </button>
+
+                <button id="print" class="toolbarButton print hiddenMediumView" title="Print" tabindex="33" data-l10n-id="print">
+                  <span data-l10n-id="print_label">Print</span>
+                </button>
+
+                <button id="download" class="toolbarButton download hiddenMediumView" title="Download" tabindex="34" data-l10n-id="download">
+                  <span data-l10n-id="download_label">Download</span>
+                </button>
+                <a href="https://assets.digication.com/filemanager/pdfjs/web/viewer.html?file=https%3A%2F%2Fcdn.files.digication.com%2Fv39JHlk0Sia7gH7u6VlQ%3Fpolicy%3DeyJoYW5kbGUiOiJ2MzlKSGxrMFNpYTdnSDd1NlZsUSIsImNhbGwiOlsicmVhZCIsImNvbnZlcnQiXSwiZXhwaXJ5IjoxNzU3OTcwNzk0fQ%3D%3D%26signature%3D7de3cab4a51705bcac26249099182014abc0fa3b5b463b3db9ac10b40857a871#page=1&amp;zoom=page-width,0,2595" id="viewBookmark" class="toolbarButton bookmark hiddenSmallView" title="Current view (copy or open in new window)" tabindex="35" data-l10n-id="bookmark">
+                  <span data-l10n-id="bookmark_label">Current View</span>
+                </a>
+
+                <div class="verticalToolbarSeparator hiddenSmallView"></div>
+
+                <button id="secondaryToolbarToggle" class="toolbarButton" title="Tools" tabindex="36" data-l10n-id="tools">
+                  <span data-l10n-id="tools_label">Tools</span>
+                </button>
+              </div>
+              <div class="outerCenter">
+                <div class="innerCenter" id="toolbarViewerMiddle">
+                  <div class="splitToolbarButton">
+                    <button id="zoomOut" class="toolbarButton zoomOut" title="Zoom Out" tabindex="21" data-l10n-id="zoom_out">
+                      <span data-l10n-id="zoom_out_label">Zoom Out</span>
+                    </button>
+                    <div class="splitToolbarButtonSeparator"></div>
+                    <button id="zoomIn" class="toolbarButton zoomIn" title="Zoom In" tabindex="22" data-l10n-id="zoom_in">
+                      <span data-l10n-id="zoom_in_label">Zoom In</span>
+                     </button>
+                  </div>
+                  <span id="scaleSelectContainer" class="dropdownToolbarButton" style="min-width: 135px; max-width: 135px;">
+                     <select id="scaleSelect" title="Zoom" tabindex="23" data-l10n-id="zoom" style="min-width: 157px;">
+                      <option id="pageAutoOption" title="" value="auto" selected="selected" data-l10n-id="page_scale_auto">Automatic Zoom</option>
+                      <option id="pageActualOption" title="" value="page-actual" data-l10n-id="page_scale_actual">Actual Size</option>
+                      <option id="pageFitOption" title="" value="page-fit" data-l10n-id="page_scale_fit">Page Fit</option>
+                      <option id="pageWidthOption" title="" value="page-width" data-l10n-id="page_scale_width">Page Width</option>
+                      <option id="customScaleOption" title="" value="custom"></option>
+                      <option title="" value="0.5" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 50 }">50%</option>
+                      <option title="" value="0.75" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 75 }">75%</option>
+                      <option title="" value="1" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 100 }">100%</option>
+                      <option title="" value="1.25" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 125 }">125%</option>
+                      <option title="" value="1.5" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 150 }">150%</option>
+                      <option title="" value="2" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 200 }">200%</option>
+                      <option title="" value="3" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 300 }">300%</option>
+                      <option title="" value="4" data-l10n-id="page_scale_percent" data-l10n-args="{ &quot;scale&quot;: 400 }">400%</option>
+                    </select>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div id="loadingBar" class="hidden">
+              <div class="progress" style="height: 100%; width: 100%;">
+                <div class="glimmer">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <menu type="context" id="viewerContextMenu">
+          <menuitem id="contextFirstPage" label="First Page" data-l10n-id="first_page" title="Go to First Page"></menuitem>
+          <menuitem id="contextLastPage" label="Last Page" data-l10n-id="last_page" title="Go to Last Page"></menuitem>
+          <menuitem id="contextPageRotateCw" label="Rotate Clockwise" data-l10n-id="page_rotate_cw" title="Rotate Clockwise"></menuitem>
+          <menuitem id="contextPageRotateCcw" label="Rotate Counter-Clockwise" data-l10n-id="page_rotate_ccw" title="Rotate Counterclockwise"></menuitem>
+        </menu>
+
+        <div id="viewerContainer" tabindex="0">
+          <div id="viewer" class="pdfViewer"><div id="pageContainer1" class="page" data-page-number="1" style="width: 1004px; height: 753px;" data-loaded="true"><div class="canvasWrapper" style="width: 1004px; height: 753px;"><canvas id="page1" width="1004" height="753" style="width: 1004px; height: 753px;"></canvas></div><div class="textLayer" style="width: 1004px; height: 753px;"><div data-canvas-width="41.32204884333332" style="left: 744.472px; top: 552.97px; font-size: 8.13426px; font-family: sans-serif; transform: scaleX(0.896581);">Test Images </div><div data-canvas-width="39.94153703703704" style="left: 554.686px; top: 588.936px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.920477);">Image quality </div><div style="left: 554.686px; top: 597.274px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="85.55730092592594" style="left: 562.529px; top: 597.372px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.897708);">Resolution was comparable to </div><div data-canvas-width="67.99485416666668" style="left: 562.529px; top: 605.809px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.904929);">commercial microscope </div><div style="left: 554.686px; top: 614.077px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="85.08202777777781" style="left: 562.529px; top: 614.175px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.915072);">Contrast and illumination was </div><div data-canvas-width="33.70778935185185" style="left: 562.529px; top: 622.333px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.9065);">satisfactory </div><div style="left: 554.686px; top: 630.67px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="86.54503240740745" style="left: 562.529px; top: 630.769px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.927109);">Full spectrum of colors visible </div><div data-angle="-90" data-canvas-width="5.810184952777778" style="left: 681.418px; top: 658.945px; font-size: 5.81018px; font-family: sans-serif; transform: rotate(-90deg) scaleX(0.899067);">18</div><div data-angle="-90" style="left: 681.418px; top: 653.088px; font-size: 5.81018px; font-family: sans-serif; transform: rotate(-90deg);">2</div><div data-angle="-90" data-canvas-width="7.8553700561555555" style="left: 681.418px; top: 650.229px; font-size: 5.81018px; font-family: sans-serif; transform: rotate(-90deg) scaleX(0.936419);">μm</div><div data-canvas-width="5.810184952777778" style="left: 754.063px; top: 712.613px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.899067);">23</div><div style="left: 759.873px; top: 712.613px; font-size: 5.81018px; font-family: sans-serif;">4</div><div data-canvas-width="7.8553700561555555" style="left: 762.778px; top: 712.613px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.936419);">μm</div><div data-canvas-width="113.50457392104724" style="left: 692.049px; top: 721.507px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.918322);">Fig 3: Microscope image of iPhone 8 pixels </div><div data-canvas-width="131.26359732083986" style="left: 840.143px; top: 721.507px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.90355);">Fig 4: Microscope image of a nanoscale waveguide</div><div data-canvas-width="5.810184952777778" style="left: 899.669px; top: 712.822px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.899067);">23</div><div style="left: 905.48px; top: 712.822px; font-size: 5.81018px; font-family: sans-serif;">4</div><div data-canvas-width="7.8553700561555555" style="left: 908.385px; top: 712.822px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.936419);">μm</div><div data-canvas-width="64.58874839219446" style="left: 419.554px; top: 156.529px; font-size: 8.13426px; font-family: sans-serif; transform: scaleX(0.965714);">Kohler Illumination</div><div data-canvas-width="80.11722453703705" style="left: 421.039px; top: 237.117px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.914958);">Kohler alignment procedure:</div><div data-canvas-width="5.229166666666666" style="left: 419.296px; top: 253.99px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899587);">1.</div><div data-canvas-width="138.10229166666673" style="left: 429.754px; top: 253.99px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.931924);">Align illumination bundle d=40mm to 30mm lens</div><div data-canvas-width="5.229166666666666" style="left: 419.296px; top: 262.427px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899587);">2.</div><div data-canvas-width="181.49333564814816" style="left: 429.754px; top: 262.427px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.918538);">Align field diaphragm so the fiber image is formed on diaphragm</div><div data-canvas-width="5.229166666666666" style="left: 419.296px; top: 270.584px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899587);">3.</div><div data-canvas-width="148.0754745370371" style="left: 429.754px; top: 270.584px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.924391);">Align Aperture diaphragm d=40mm from 40mm lens</div><div data-canvas-width="5.229166666666666" style="left: 419.296px; top: 278.951px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899587);">4.</div><div data-canvas-width="148.19865046296303" style="left: 429.754px; top: 278.951px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.923668);">Align 40mm achromat d=114mm from objective lens</div><div data-canvas-width="5.229166666666666" style="left: 419.296px; top: 287.387px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899587);">5.</div><div data-canvas-width="71.06321296296298" style="left: 429.754px; top: 287.387px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.919082);">Align beamsplitter at 45º </div><div data-canvas-width="48.09186921830046" style="left: 381.795px; top: 206.36px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.919269);">Aperture Diaphragm</div><div data-canvas-width="40.714871056590276" style="left: 354.072px; top: 219.746px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.920346);">Field Diaphragm </div><div data-canvas-width="49.721141915475236" style="left: 447.196px; top: 216.679px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.890079);">30mm achromat lens </div><div data-canvas-width="53.45999593258775" style="left: 341.486px; top: 231.948px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.914692);">40mm Achromat Lens </div><div data-canvas-width="57.228869238622934" style="left: 335.697px; top: 259px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.913549);">20mm working distance </div><div data-canvas-width="33.20956464383958" style="left: 335.697px; top: 265.972px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.902009);">objective lens </div><div data-canvas-width="48.301035876600494" style="left: 338.843px; top: 244.846px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.906553);">Pellicle beamsplitter </div><div data-canvas-width="73.06598087365695" style="left: 456.484px; top: 204.198px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.931047);">Fiber optic illumination bundle </div><div data-canvas-width="64.38023855133353" style="left: 330.136px; top: 166.954px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(1.00163);">Conjugate image planes </div><div data-canvas-width="43.80492108730926" style="left: 300.272px; top: 297.347px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.922738);">Evenly distributed </div><div data-canvas-width="35.415982379656946" style="left: 300.272px; top: 304.319px; font-size: 5.81018px; font-family: sans-serif; transform: scaleX(0.90615);">defocused light</div><div data-canvas-width="106.12771087775" style="left: 353.3px; top: 552.621px; font-size: 8.13426px; font-family: sans-serif; transform: scaleX(0.91029);">Photo of Assembled Microscope</div><div data-canvas-width="90.08401620370374" style="left: 778.44px; top: 495.648px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.937705);">3 axis XYZ stage with 2” travel </div><div data-canvas-width="82.6475601851852" style="left: 778.44px; top: 504.014px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.885131);">positions sample and focuses </div><div data-canvas-width="33.71069444444445" style="left: 778.44px; top: 512.451px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.897216);">microscope </div><div data-canvas-width="50.87709478322222" style="left: 800.015px; top: 403.136px; font-size: 8.13426px; font-family: sans-serif; transform: scaleX(0.954161);">Motion control </div><div data-canvas-width="67.57303472222222" style="left: 746.855px; top: 459.741px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.927808);">Two 3 axis XYZ stages </div><div data-canvas-width="64.82481712962964" style="left: 746.855px; top: 468.177px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.889949);">placed above precisely </div><div data-canvas-width="69.11738194444445" style="left: 746.855px; top: 476.613px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.938921);">control fiber positioning </div><div data-canvas-width="54.331041666666664" style="left: 745.756px; top: 429.76px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.904588);">Two hinged stands </div><div data-canvas-width="52.88953472222222" style="left: 745.756px; top: 438.196px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.922346);">control fiber angle </div><div data-canvas-width="73.92124305555555" style="left: 648.007px; top: 425.507px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.926322);">Rotation clamps allow for </div><div data-canvas-width="76.02336805555557" style="left: 648.007px; top: 433.943px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.906026);">vertical translation and 90º </div><div data-canvas-width="30.789914351851845" style="left: 648.007px; top: 442.38px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.934903);">of rotation </div><div data-canvas-width="30.78236111111111" style="left: 285.336px; top: 111.37px; font-size: 10.4583px; font-family: sans-serif; transform: scaleX(0.883404);">Results</div><div data-canvas-width="52.63374131944444" style="left: 609.452px; top: 130.911px; font-size: 8.71528px; font-family: sans-serif; transform: scaleX(0.898562);">Design Results</div><div data-canvas-width="52.766358796296295" style="left: 553.645px; top: 655.869px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.86738);">Issues encountered</div><div style="left: 553.645px; top: 664.137px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="105.2468564814815" style="left: 561.489px; top: 664.236px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.917706);">Distortion due to unwanted vibrations</div><div style="left: 553.645px; top: 672.574px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="101.9774652777778" style="left: 561.489px; top: 672.672px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.895202);">Field diaphragm not centered due to </div><div data-canvas-width="87.11268750000004" style="left: 561.489px; top: 681.109px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.914061);">pellicle beamsplitter alignment </div><div data-canvas-width="29.862027777777772" style="left: 561.489px; top: 689.266px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.975802);">difficulties</div><div style="left: 553.645px; top: 697.604px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="100.5754675925926" style="left: 561.489px; top: 697.703px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.892117);">Image loses focus when base x or y </div><div data-canvas-width="48.945" style="left: 561.489px; top: 706.069px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.871189);">stage is adjusted  </div><div data-canvas-width="63.17181944444447" style="left: 894.307px; top: 169.626px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.937137);">Sample (Vertical light </div><div data-canvas-width="66.67478009259258" style="left: 894.307px; top: 178.063px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.935228);">coupling with fiber and </div><div data-canvas-width="25.42362731481481" style="left: 894.307px; top: 186.429px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.924309);">grating)  </div><div data-canvas-width="52.95133148697222" style="left: 784.355px; top: 155.553px; font-size: 8.13426px; font-family: sans-serif; transform: scaleX(0.908452);">Imaging System</div><div data-canvas-width="23.295821296296296" style="left: 643.15px; top: 230.424px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.871646);">Camera </div><div data-canvas-width="50.2156875" style="left: 686.002px; top: 225.056px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.953162);">ƒ 200mm infinity </div><div data-canvas-width="54.06725925925925" style="left: 686.002px; top: 233.492px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.883231);">corrected tube lens </div><div data-canvas-width="48.25358796296297" style="left: 754.117px; top: 225.683px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.909049);">Back focal plane </div><div data-canvas-width="33.12328472222222" style="left: 754.117px; top: 234.05px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899922);">diaphragm  </div><div data-canvas-width="44.43803935185185" style="left: 819.699px; top: 225.753px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.940388);">20mm working </div><div data-canvas-width="64.34954398148149" style="left: 819.699px; top: 234.189px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.892937);">distance objective lens </div><div data-canvas-width="44.07606481481481" style="left: 637.762px; top: 259.707px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.917465);">Objective Lens:</div><div data-canvas-width="300.55797453703684" style="left: 683.772px; top: 259.707px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.907342);">The long working distance objective lens allows the sample to be 20mm away from the end of the objective </div><div data-canvas-width="283.9780300925924" style="left: 637.762px; top: 268.144px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.901566);">lens. This is necessary so that the objective lens does not collide with the fiber or the photonic device. </div><div data-canvas-width="47.713240740740744" style="left: 637.762px; top: 293.104px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.879582);">Setup Procedure:</div><div data-canvas-width="99.28037731481486" style="left: 690.78px; top: 293.104px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.884152);">1. Focus tube lens and camera to ∞ </div><div data-canvas-width="123.70000462962969" style="left: 691.797px; top: 301.541px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.92413);">2. Align objective d=140mm from tube lens </div><div data-canvas-width="128.4875972222223" style="left: 691.797px; top: 309.977px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.913536);">3. Align back focal plane aperture to objective</div><div data-canvas-width="92.85547453703707" style="left: 691.797px; top: 318.414px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.901053);">4. Adjust Z stage to focus sample</div><div data-canvas-width="84.8490393518519" style="left: 637.762px; top: 334.938px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.920281);">Ray optics imaging principles:</div><div style="left: 637.762px; top: 343.275px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="238.4174629629629" style="left: 645.606px; top: 343.374px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.908278);">Light reflects off the sample and enters the objective lens which focuses the light to ∞</div><div style="left: 637.762px; top: 351.712px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="269.52635648148134" style="left: 645.606px; top: 351.811px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.907039);">Objective lens back focal plane diaphragm blocks extraneous light from entering imaging system</div><div style="left: 637.762px; top: 360.148px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="286.2149513888887" style="left: 645.606px; top: 360.247px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.902021);">Infinity corrected tube lens creates an inverted real image at a distance of 148mm, at 20x magnification</div><div style="left: 637.762px; top: 368.515px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="265.5028032407406" style="left: 645.606px; top: 368.614px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.899349);">Image is projected on camera sensor, producing a clear picture which is viewed on a computer  </div><div data-canvas-width="51.72343055555556" style="left: 16.777px; top: 106.768px; font-size: 10.4583px; font-family: sans-serif; transform: scaleX(0.947189);">Introduction</div><div data-canvas-width="26.916263888888885" style="left: 16.6986px; top: 122.355px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.92642);">Objective</div><div data-canvas-width="200.99522222222225" style="left: 43.7523px; top: 122.355px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.915015);">: Design, construct, and test a robust &amp; versatile light coupling platform </div><div data-canvas-width="66.26574305555557" style="left: 16.6986px; top: 130.791px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.924547);">with an integrated multi</div><div style="left: 83.3705px; top: 130.791px; font-size: 6.97222px; font-family: sans-serif;">-</div><div data-canvas-width="167.53785185185185" style="left: 85.6946px; top: 130.791px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.912405);">viewing angle microscope for use in a variety of microscale </div><div data-canvas-width="63.32578935185187" style="left: 16.6986px; top: 139.227px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.903039);">photonic experiments. </div><div data-canvas-width="34.00468981481481" style="left: 17.7697px; top: 151.917px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.914149);">Background</div><div style="left: 51.832px; top: 151.917px; font-size: 6.97222px; font-family: sans-serif;">:</div><div data-canvas-width="77.40793518518521" style="left: 17.7697px; top: 160.284px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.891887);">Nanoscale photonic devices</div><div style="left: 17.7697px; top: 168.621px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="41.71771064814814" style="left: 25.6135px; top: 168.72px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.961485);">Miniature light</div><div style="left: 67.5557px; top: 168.72px; font-size: 6.97222px; font-family: sans-serif;">-</div><div data-canvas-width="147.94067824074088" style="left: 69.8798px; top: 168.72px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.926858);">manipulating devices, typically built on silicon chips </div><div style="left: 17.7697px; top: 177.058px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="97.93009027777784" style="left: 25.6135px; top: 177.156px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.915787);">Have the potential to facilitate ultra</div><div style="left: 124.314px; top: 177.156px; font-size: 6.97222px; font-family: sans-serif;">-</div><div data-canvas-width="117.33262268518526" style="left: 126.638px; top: 177.156px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.898796);">fast data transfer within computer systems</div><div style="left: 17.7697px; top: 185.215px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="219.49949999999993" style="left: 25.6135px; top: 185.314px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.906503);">To perform experiments with nanoscale photonic devices, light must enter and </div><div data-canvas-width="172.89309953703705" style="left: 25.6135px; top: 193.75px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.897853);">exit the sample in a controlled manner (couple and decouple). </div><div data-canvas-width="40.937983796296294" style="left: 17.7697px; top: 210.553px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.951726);">Light coupling</div><div style="left: 17.7697px; top: 218.891px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="146.1488171296297" style="left: 25.6135px; top: 218.99px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.900256);">Facilitated using either an inverse taper, or a grating.</div><div style="left: 17.7697px; top: 227.048px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="228.7876620370369" style="left: 25.6135px; top: 227.147px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.912751);">Light from the fiber must hit the grating or inverse taper at the correct orientation. </div><div data-canvas-width="220.24087962962955" style="left: 25.6135px; top: 235.584px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.906634);">For this to occur, the fiber and coupler must be in alignment, however both are </div><div data-canvas-width="152.1693310185186" style="left: 25.6135px; top: 243.95px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.892636);">smaller than can be seen with the naked eye. The multi</div><div style="left: 178.53px; top: 243.95px; font-size: 6.97222px; font-family: sans-serif;">-</div><div data-canvas-width="50.42194907407408" style="left: 180.854px; top: 243.95px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.891429);">angle microscope </div><div data-canvas-width="218.74708101851843" style="left: 25.6135px; top: 252.387px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.906313);">overcomes this issue by magnifying the sample by 20x and facilitating precise </div><div data-canvas-width="76.71013194444446" style="left: 25.6135px; top: 260.823px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.920783);">manipulation of each fiber. </div><div data-canvas-width="51.69902777777777" style="left: 20.0312px; top: 565.192px; font-size: 10.4583px; font-family: sans-serif; transform: scaleX(0.908214);">Conclusions</div><div data-canvas-width="96.32821521653335" style="left: 16.259px; top: 337.687px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.922474);">Horizontal coupling (above) requires </div><div data-canvas-width="106.79487572075372" style="left: 16.259px; top: 345.496px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.905621);">overhead viewing angle. The microscope </div><div data-canvas-width="81.46760248557685" style="left: 16.259px; top: 353.026px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.917413);">must be in the upright position. </div><div data-canvas-width="102.17084017741759" style="left: 147.325px; top: 337.687px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.916149);">Near vertical coupling (above) requires </div><div data-canvas-width="107.57353731535835" style="left: 147.325px; top: 345.496px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.906849);">side viewing angle. The microscope must </div><div data-canvas-width="64.3519602118324" style="left: 147.325px; top: 353.026px; font-size: 6.3912px; font-family: sans-serif; transform: scaleX(0.905674);">be in the angled position.</div><div data-canvas-width="24.81138731677426" style="left: 222.858px; top: 317.04px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.984254);">Viewing angle</div><div data-angle="-94.84923421398148" data-canvas-width="24.811382963847784" style="left: 52.5937px; top: 310.157px; font-size: 4.06713px; font-family: sans-serif; transform: rotate(-94.8492deg) scaleX(0.984253);">Viewing angle</div><div data-canvas-width="27.861581018518514" style="left: 20.8041px; top: 585.519px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.82668);">Successes</div><div style="left: 20.8041px; top: 593.857px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="203.27746296296297" style="left: 28.6478px; top: 593.956px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.889293);">The microscope was successfully assembled and functioned as intended, </div><div data-canvas-width="153.70612500000004" style="left: 28.6478px; top: 602.392px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.903744);">demonstrating accuracy of 3D model and optics model </div><div style="left: 20.8041px; top: 610.73px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="218.23171759259256" style="left: 28.6478px; top: 610.829px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.892685);">The microscope successfully imaged the nanoscale waveguide, demonstrating </div><div data-canvas-width="109.87931712962968" style="left: 28.6478px; top: 618.986px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.932879);">usability in light coupling applications  </div><div data-canvas-width="36.608524305555555" style="left: 19.804px; top: 382.31px; font-size: 10.4583px; font-family: sans-serif; transform: scaleX(0.913378);">Methods</div><div data-canvas-width="30.790495370370373" style="left: 17.9512px; top: 710.95px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.863861);">References</div><div data-canvas-width="11.445715549662777" style="left: 62.3212px; top: 288.873px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(1.01452);">Fig 1. </div><div data-canvas-width="11.445715549662777" style="left: 202.556px; top: 290.755px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(1.01452);">Fig 2. </div><div data-canvas-width="66.58007407407406" style="left: 128.2px; top: 14.4014px; font-size: 27.8889px; font-family: sans-serif; transform: scaleX(1.13109);">Multi</div><div style="left: 194.799px; top: 14.4014px; font-size: 27.8889px; font-family: sans-serif;">-</div><div data-canvas-width="671.4110555555554" style="left: 204.095px; top: 14.4014px; font-size: 27.8889px; font-family: sans-serif; transform: scaleX(0.976505);">Viewing Angle Fiber Coupling Microscope Development</div><div data-canvas-width="273.50938236977765" style="left: 365.17px; top: 65.3038px; font-size: 12.7824px; font-family: sans-serif; transform: scaleX(0.918233);">1. Research Triangle High School 2. Duke University</div><div data-canvas-width="454.48054313876406" style="left: 277.446px; top: 47.3852px; font-size: 12.7824px; font-family: sans-serif; transform: scaleX(0.999119);">Caleb Farrelly, Jiannan Gao, Mikhail Shalaev, Natalia Litchinitser, Elizabeth Teka</div><div data-canvas-width="19.76102083333333" style="left: 21.4402px; top: 398.873px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.910809);">Design</div><div style="left: 21.4402px; top: 407.211px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="202.10322453703705" style="left: 29.2839px; top: 407.309px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.915224);">Illumination and imaging optical system designed in ray optics simulator</div><div style="left: 21.4402px; top: 415.647px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="203.2228472222221" style="left: 29.2839px; top: 415.746px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.907496);">3D model designed in Fusion 360 CAD using manufacturer components </div><div data-canvas-width="81.76325000000003" style="left: 29.2839px; top: 424.182px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.933938);">(Thorlabs, Mitutoyo, Bobcat)</div><div style="left: 21.4402px; top: 432.241px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="142.9648356481482" style="left: 29.2839px; top: 432.34px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.931948);">Model motion control tested with CAD simulations</div><div style="left: 21.4402px; top: 440.608px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="100.53072916666673" style="left: 29.2839px; top: 440.706px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.930043);">Design approved by Dr. Litchinitser</div><div data-canvas-width="15.374331018518516" style="left: 21.1238px; top: 457.998px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.991976);">Build</div><div style="left: 21.1238px; top: 466.335px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="150.975337962963" style="left: 28.9675px; top: 466.434px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.89997);">Ordered components from Thorlabs at a cost of $4328</div><div style="left: 21.1238px; top: 474.772px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="119.91350694444446" style="left: 28.9675px; top: 474.87px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.902427);">Assembled microscope according to model</div><div style="left: 21.1238px; top: 483.208px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="108.81779629629638" style="left: 28.9675px; top: 483.307px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.918031);">Mounted microscope on tilt rail system</div><div data-canvas-width="12.048697222222222" style="left: 21.1238px; top: 500.807px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.942568);">Test</div><div style="left: 21.1238px; top: 509.145px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="189.4649097222222" style="left: 28.9675px; top: 509.243px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.900603);">iPhone screen was selected for imaging due to known size of pixels </div><div style="left: 21.1238px; top: 517.581px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="219.93875" style="left: 28.9675px; top: 517.68px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.901073);">Nanoscale waveguide was selected to demonstrate compatibility with intended </div><div data-canvas-width="32.38190509259259" style="left: 28.9675px; top: 526.046px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.918331);">application </div><div data-canvas-width="34.292875" style="left: 20.8041px; top: 638.508px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.931957);">Future work</div><div style="left: 20.8041px; top: 646.846px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="175.16604398148147" style="left: 28.6478px; top: 646.945px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.920838);">Fix the vibration issue and loss of focus during XY translation </div><div style="left: 20.8041px; top: 655.213px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="209.95801388888887" style="left: 28.6478px; top: 655.311px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.892823);">Replace or secure the pellicle in a more precise manner because it is highly </div><div data-canvas-width="84.07163657407409" style="left: 28.6478px; top: 663.748px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.935326);">difficult to keep in alignment. </div><div style="left: 20.8041px; top: 671.807px; font-size: 6.97222px; font-family: sans-serif;">•</div><div data-canvas-width="179.03388425925922" style="left: 28.6478px; top: 671.905px; font-size: 6.97222px; font-family: sans-serif; transform: scaleX(0.909678);">Determine actual resolving power by imaging a resolution target</div><div data-canvas-width="57.36584336547014" style="left: 57.9806px; top: 712.353px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.945142);">Li, C., &amp; Zhang, H. (2013). CMOS</div><div style="left: 115.356px; top: 712.353px; font-size: 4.06713px; font-family: sans-serif;">-</div><div data-canvas-width="55.72102845174352" style="left: 116.7px; top: 712.353px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.931644);">compatible high efficiency double</div><div style="left: 172.405px; top: 712.353px; font-size: 4.06713px; font-family: sans-serif;">-</div><div data-canvas-width="58.78696616234954" style="left: 173.749px; top: 712.353px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.904314);">etched apodized waveguide grating </div><div data-canvas-width="38.97733457827917" style="left: 78.8973px; top: 717.025px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.928615);">coupler. Retrieved from</div><div data-canvas-width="87.74899459996898" style="left: 78.8973px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.93805);">https://www.osapublishing.org/oe/fulltext.cfm?uri=oe</div><div style="left: 166.704px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif;">-</div><div data-canvas-width="4.067129397222222" style="left: 168.047px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.900618);">21</div><div style="left: 172.114px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif;">-</div><div style="left: 173.458px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif;">7</div><div style="left: 175.492px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif;">-</div><div data-canvas-width="28.89187045551736" style="left: 176.835px; top: 721.905px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.937483);">7868&amp;id=251662</div><div data-canvas-width="103.63621880786829" style="left: 57.9806px; top: 731.806px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.927718);">Jingshu, G., &amp; Daoxin, D. (2018). Silicon nanophotonics for on</div><div style="left: 161.583px; top: 731.806px; font-size: 4.06713px; font-family: sans-serif;">-</div><div data-canvas-width="65.66109269855463" style="left: 162.927px; top: 731.806px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.935592);">chip light manipulation. Retrieved from </div><div data-canvas-width="105.04242879695788" style="left: 78.8973px; top: 736.756px; font-size: 4.06713px; font-family: sans-serif; transform: scaleX(0.922126);">http://cpb.iphy.ac.cn/article/2018/1958/cpb_27_10_104208.html</div><div class="endOfContent"></div></div><div class="annotationLayer"><section data-annotation-id="44R" class="linkAnnotation" style="transform: matrix(0.290509, 0, 0, 0.290509, 0, 0); transform-origin: -271.44px -2487.6px; left: 271.44px; top: 2487.6px; width: 437.28px; height: 12.96px;"><a title="https://www.osapublishing.org/oe/fulltext.cfm?uri=oe-21-7-7868&amp;id=251662" href="https://www.osapublishing.org/oe/fulltext.cfm?uri=oe-21-7-7868&amp;id=251662" target="_top" rel="noreferrer"></a></section><section data-annotation-id="45R" class="linkAnnotation" style="transform: matrix(0.290509, 0, 0, 0.290509, 0, 0); transform-origin: -271.44px -2538.72px; left: 271.44px; top: 2538.72px; width: 362.16px; height: 12.96px;"><a title="http://cpb.iphy.ac.cn/article/2018/1958/cpb_27_10_104208.html" href="http://cpb.iphy.ac.cn/article/2018/1958/cpb_27_10_104208.html" target="_top" rel="noreferrer"></a></section></div></div></div>
+        </div>
+
+        <div id="errorWrapper" hidden="true">
+          <div id="errorMessageLeft">
+            <span id="errorMessage"></span>
+            <button id="errorShowMore" data-l10n-id="error_more_info">More Information</button>
+            <button id="errorShowLess" data-l10n-id="error_less_info" hidden="true">Less Information</button>
+          </div>
+          <div id="errorMessageRight">
+            <button id="errorClose" data-l10n-id="error_close">Close</button>
+          </div>
+          <div class="clearBoth"></div>
+          <textarea id="errorMoreInfo" hidden="true" readonly="readonly"></textarea>
+        </div>
+      </div> <!-- mainContainer -->
+
+      <div id="overlayContainer" class="hidden">
+        <div id="passwordOverlay" class="container hidden">
+          <div class="dialog">
+            <div class="row">
+              <p id="passwordText" data-l10n-id="password_label">Enter the password to open this PDF file.</p>
+            </div>
+            <div class="row">
+              <!-- The type="password" attribute is set via script, to prevent warnings in Firefox for all http:// documents. -->
+              <input id="password" class="toolbarField">
+            </div>
+            <div class="buttonRow">
+              <button id="passwordCancel" class="overlayButton"><span data-l10n-id="password_cancel">Cancel</span></button>
+              <button id="passwordSubmit" class="overlayButton"><span data-l10n-id="password_ok">OK</span></button>
+            </div>
+          </div>
+        </div>
+        <div id="documentPropertiesOverlay" class="container hidden">
+          <div class="dialog">
+            <div class="row">
+              <span data-l10n-id="document_properties_file_name">File name:</span> <p id="fileNameField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_file_size">File size:</span> <p id="fileSizeField">-</p>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+              <span data-l10n-id="document_properties_title">Title:</span> <p id="titleField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_author">Author:</span> <p id="authorField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_subject">Subject:</span> <p id="subjectField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_keywords">Keywords:</span> <p id="keywordsField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creation_date">Creation Date:</span> <p id="creationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_modification_date">Modification Date:</span> <p id="modificationDateField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_creator">Creator:</span> <p id="creatorField">-</p>
+            </div>
+            <div class="separator"></div>
+            <div class="row">
+              <span data-l10n-id="document_properties_producer">PDF Producer:</span> <p id="producerField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_version">PDF Version:</span> <p id="versionField">-</p>
+            </div>
+            <div class="row">
+              <span data-l10n-id="document_properties_page_count">Page Count:</span> <p id="pageCountField">-</p>
+            </div>
+            <div class="buttonRow">
+              <button id="documentPropertiesClose" class="overlayButton"><span data-l10n-id="document_properties_close">Close</span></button>
+            </div>
+          </div>
+        </div>
+      </div>  <!-- overlayContainer -->
+
+    </div> <!-- outerContainer -->
+    <div id="printContainer"></div>
+<div id="mozPrintCallback-shim" hidden="">
+  <style>
+@media print {
+  #printContainer div {
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+}
+  </style>
+  <style scoped="">
+#mozPrintCallback-shim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999999;
+
+  display: block;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+#mozPrintCallback-shim[hidden] {
+  display: none;
+}
+@media print {
+  #mozPrintCallback-shim {
+    display: none;
+  }
+}
+
+#mozPrintCallback-shim .mozPrintCallback-dialog-box {
+  display: inline-block;
+  margin: -50px auto 0;
+  position: relative;
+  top: 45%;
+  left: 0;
+  min-width: 220px;
+  max-width: 400px;
+
+  padding: 9px;
+
+  border: 1px solid hsla(0, 0%, 0%, .5);
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+
+  background-color: #474747;
+
+  color: hsl(0, 0%, 85%);
+  font-size: 16px;
+  line-height: 20px;
+}
+#mozPrintCallback-shim .progress-row {
+  clear: both;
+  padding: 1em 0;
+}
+#mozPrintCallback-shim progress {
+  width: 100%;
+}
+#mozPrintCallback-shim .relative-progress {
+  clear: both;
+  float: right;
+}
+#mozPrintCallback-shim .progress-actions {
+  clear: both;
+}
+  </style>
+  <div class="mozPrintCallback-dialog-box">
+    <!-- TODO: Localise the following strings -->
+    Preparing document for printing...
+    <div class="progress-row">
+      <progress value="0" max="100"></progress>
+      <span class="relative-progress">0%</span>
+    </div>
+    <div class="progress-actions">
+      <input type="button" value="Cancel" class="mozPrintCallback-cancel">
+    </div>
+  </div>
+</div>
+
+  
+
+<input id="fileInput" class="fileInput" type="file"></body></html>
