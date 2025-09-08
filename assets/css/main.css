@@ -2654,6 +2654,16 @@ input, select, textarea {
 		margin-bottom: 0 !important;
 	}
 
+	/* Fix horizontal spacing by adjusting column widths */
+	.row .col-6 {
+		width: calc(50% - 1em) !important;
+		margin-right: 1em !important;
+	}
+
+	.row .col-6:nth-child(2n) {
+		margin-right: 0 !important;
+	}
+
 /* Header */
 
 	#header {
