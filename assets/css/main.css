@@ -2640,10 +2640,19 @@ input, select, textarea {
 			color: #2c3e50 !important;
 		}
 
-		.work-item .button.primary:hover {
-			background: rgba(73, 191, 157, 0.3);
-			border-color: rgba(73, 191, 157, 0.6);
-		}
+	.work-item .button.primary:hover {
+		background: rgba(73, 191, 157, 0.3);
+		border-color: rgba(73, 191, 157, 0.6);
+	}
+
+	/* Ensure proper spacing for work-item elements in project pages */
+	.row .work-item {
+		margin-bottom: 3em !important;
+	}
+
+	.row .work-item:last-child {
+		margin-bottom: 0 !important;
+	}
 
 /* Header */
 
