@@ -148,31 +148,12 @@
 										<button onclick="resetCameraView()" style="background: #2a5298; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Reset View</button>
 										<button onclick="toggleCrossSection()" id="crossSectionBtn" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Show Cross-Section</button>
 										<button onclick="debugModel()" style="background: #666; color: white; border: 1px solid white; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 14px; margin: 5px;">Debug Model</button>
-										<p><em>This interactive model showcases the complete hybrid rocket engine assembly designed and manufactured at Cornell University.</em></p>
+										<p><em>This interactive model showcases the complete liquid rocket engine assembly designed and manufactured at Cornell University.</em></p>
 									</div>
 								</div>
 							</div>
 							
-							<h4>Model Components:</h4>
-							<div class="row">
-								<div class="col-6 col-12-xsmall">
-									<ul>
-										<li><strong>Injector Assembly:</strong> N2O oxidizer injection system</li>
-										<li><strong>Combustion Chamber:</strong> Hybrid fuel grain housing</li>
-										<li><strong>Nozzle Assembly:</strong> Thrust generation and exhaust</li>
-										<li><strong>Retention Ring:</strong> Nozzle mounting and sealing</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-xsmall">
-									<ul>
-										<li><strong>Oxidizer Tank:</strong> Liquid N2O storage vessel</li>
-										<li><strong>Bulkhead Assembly:</strong> Pressure vessel end caps</li>
-										<li><strong>Fluid Connections:</strong> Piping and valve interfaces</li>
-										<li><strong>Mounting Hardware:</strong> Test stand integration</li>
-									</ul>
-								</div>
-							</div>
-						</article>
+							<!-- INSERT_YOUR_REWRITE_HERE -->
 						
 						<ul class="actions">
 							<li><a href="#three" class="button">View Skills</a></li>
@@ -181,91 +162,28 @@
 					</section>
 
 				<!-- Three -->
-					<section id="three">
-						<h2>Technical Skills & Expertise</h2>
-						<div class="row">
-							<div class="col-6 col-12-xsmall">
-								<h3>CAD & Design</h3>
-								<ul>
-									<li><strong>Solidworks:</strong> Advanced assemblies, components, drawings, pressure vessel design</li>
-									<li><strong>Fluid System Design:</strong> P&ID creation, piping design, pressure vessel design</li>
-									<li><strong>3D Modeling:</strong> Complex assemblies, component design, technical drawings</li>
-								</ul>
-								
-								<h3>Manufacturing & Machining</h3>
-								<ul>
-									<li><strong>CNC Machining:</strong> 3- and 4-axis HAAS mills (175+ hours experience)</li>
-									<li><strong>Bridgeport Mill:</strong> Manual machining operations</li>
-									<li><strong>3D Printing:</strong> FDM and resin printing, parameter optimization</li>
-									<li><strong>Rapid Prototyping:</strong> Design for manufacturing, production quality parts</li>
-								</ul>
-							</div>
-							<div class="col-6 col-12-xsmall">
-								<h3>Programming & Analysis</h3>
-								<ul>
-									<li><strong>MATLAB:</strong> Hybrid rocket design tools, data analysis, simulations</li>
-									<li><strong>Engineering Calculations:</strong> Thermodynamics, fluid dynamics, thrust calculations</li>
-									<li><strong>Data Analysis:</strong> Test data processing, performance validation</li>
-								</ul>
-								
-								<h3>Project Management</h3>
-								<ul>
-									<li><strong>Team Leadership:</strong> Led hybrid propulsion team, guided 10+ members</li>
-									<li><strong>Technical Presentations:</strong> Industry reviews, design presentations</li>
-									<li><strong>Testing Procedures:</strong> Propulsion testing protocols, safety procedures</li>
-									<li><strong>Cost Management:</strong> Saved $3000+ through in-house manufacturing</li>
-								</ul>
-							</div>
-						</div>
-						
-						<h3>Specialized Experience</h3>
-						<div class="row">
-							<div class="col-4 col-12-xsmall">
-								<h4>Hybrid Rocket Propulsion</h4>
-								<ul>
-									<li>Test stand design (1000 lbf capability)</li>
-									<li>Engine design (260 lbf & 950 lbf)</li>
-									<li>Injector design & optimization</li>
-									<li>Fluid system design</li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-xsmall">
-								<h4>High-Temperature Systems</h4>
-								<ul>
-									<li>Vacuum assemblies (1900°C)</li>
-									<li>Novel ceramic 3D printing</li>
-									<li>Vacuum furnace design</li>
-									<li>Material science experiments</li>
-								</ul>
-							</div>
-							<div class="col-4 col-12-xsmall">
-								<h4>Optical Systems</h4>
-								<ul>
-									<li>Nanoscale photonic devices</li>
-									<li>Microscope design & testing</li>
-									<li>Motion control systems</li>
-									<li>Vibration isolation</li>
-								</ul>
-							</div>
-						</div>
-					</section>
+					<!-- INSERT_YOUR_REWRITE_HERE -->
 
 				<!-- Four -->
 					<section id="four">
 						<h2>Get In Touch</h2>
-						<p>I'm always interested in discussing engineering projects, internships, and opportunities in aerospace and mechanical engineering. Feel free to reach out!</p>
+						<p>I'm always interested in discussing engineering projects and opportunities in aerospace and mechanical engineering. Feel free to reach out!</p>
 						<div class="row">
 							<div class="col-8 col-12-small">
-								<form method="post" action="#">
+								<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
 									<div class="row gtr-uniform gtr-50">
-										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+										<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" required /></div>
+										<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" required /></div>
+										<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4" required></textarea></div>
+										<!-- Honeypot field for spam protection -->
+										<div style="display: none;">
+											<label>Don't fill this out if you're human: <input name="bot-field" /></label>
+										</div>
 									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+									</ul>
 								</form>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
 							</div>
 							<div class="col-4 col-12-small">
 								<ul class="labeled-icons">
@@ -282,7 +200,7 @@
 									</li>
 									<li>
 										<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-										<a href="mailto:cfarrelly@cornell.edu">cfarrelly@cornell.edu</a>
+										<a href="mailto:cfarrelly@cornell.edu">calebfarrelly@gmail.com</a>
 									</li>
 								</ul>
 							</div>
