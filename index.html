@@ -11,9 +11,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!-- Three.js for 3D model viewer -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="this.onerror=null; this.src='https://unpkg.com/three@0.128.0/build/three.min.js'"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js" onerror="this.onerror=null; this.src='https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js'"></script>
+		<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" onerror="this.onerror=null; this.src='https://unpkg.com/three@0.128.0/examples/js/loaders/GLTFLoader.js'"></script>
 	</head>
 	<body class="is-preload">
 
@@ -273,7 +273,44 @@
 			let crossSectionEnabled = false;
 			let clippingPlane;
 
+			// Check WebGL support
+			function isWebGLAvailable() {
+				try {
+					const canvas = document.createElement('canvas');
+					return !!(window.WebGLRenderingContext && 
+						(canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+				} catch (e) {
+					return false;
+				}
+			}
+
+			// Show model error message
+			function showModelError(message) {
+				const container = document.getElementById('model-container');
+				container.innerHTML = `
+					<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 2em; text-align: center; background: #f8f9fa; border-radius: 8px;">
+						<h4 style="color: #dc3545; margin-bottom: 1em;">3D Model Unavailable</h4>
+						<p style="color: #6c757d; margin-bottom: 1em;">${message}</p>
+						<p style="color: #6c757d; font-size: 0.9em;">The rest of the portfolio is still fully functional.</p>
+					</div>
+				`;
+			}
+
 			function init3DViewer() {
+				// Check if Three.js is loaded
+				if (typeof THREE === 'undefined') {
+					console.error('Three.js not loaded');
+					showModelError('Three.js library failed to load. Please refresh the page or try a different browser.');
+					return;
+				}
+				
+				// Check WebGL support
+				if (!isWebGLAvailable()) {
+					console.warn('WebGL not supported on this device');
+					showModelError('3D model viewer requires WebGL support. Your device/browser may not support this feature.');
+					return;
+				}
+				
 				const container = document.getElementById('model-container');
 				
 				// Scene setup
