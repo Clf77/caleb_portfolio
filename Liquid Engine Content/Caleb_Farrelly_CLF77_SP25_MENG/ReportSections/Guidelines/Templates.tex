@@ -1,0 +1,123 @@
+\section{Templates}
+\subsection{SubSection Template}
+\subsubsection{SubSubSection Template}
+
+\subsection{Picture Template}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{Images/logo_small.png}
+    \captionof{figure}{\textbf{ImageCaption} \cite{einstein}}
+\end{figure}
+
+
+
+
+\subsection{Table Template}
+
+
+\begin{longtable}[c]{| l | l | l | l |}
+ 
+\hline
+\multicolumn{1}{|c|}{\textbf{Column A}} &
+\multicolumn{1}{c|}{\textbf{Column B}} &
+\multicolumn{1}{c|}{\textbf{Column C}} &
+\multicolumn{1}{c|}{\textbf{Column D}} \\
+\hline
+
+Things & Many Things & More Things & Even More Things \\
+Things & Many Things & More Things & Even More Things \\
+Things & Many Things & More Things & Even More Things \\
+Things & Many Things & More Things & Even More Things \\
+Things & Many Things & More Things & Even More Things \\
+
+\hline
+\endfirsthead
+
+\caption{Table caption.} \\
+
+\end{longtable}
+
+
+
+\subsection{Equation Template}
+\begin{equation}
+    \dot\Omega_{sec}=-\frac{3\cdot n\cdot R_{body}^2 \cdot J_{2,body}^2}{2 \cdot a^2 \cdot (1-e^2)^2} \cdot \cos(I)
+\end{equation}
+\begin{equation}
+    \dot\omega_{sec}=\frac{3}{2} \cdot J_{2,body} \cdot n \cdot \left(\frac{R_{body}}{a \cdot (1-e^2)}\right)^2\left(2-\frac{5}{2} \cdot \sin^2(I)\right)
+\end{equation}
+\begin{equation}
+    \dot M=n-\frac{3 \cdot J_{2,body} \cdot n \cdot R^2_{body}}{4 \cdot a^2 \cdot (1-e^2)^{\frac{3}{2}}}(2-3 \cdot \sin^2(I))
+\end{equation}
+Where:
+\begin{equation}
+    n=\sqrt{\frac{\mu_{body}}{a^3}}
+\end{equation}
+
+\subsection{Inline Code}
+
+Use the parameter after \verb|\begin{minted}| to specify your language.
+
+\subsubsection{Java Code}
+\begin{minted}{java}
+// Hello.java
+import javax.swing.JApplet;
+import java.awt.Graphics;
+
+public class Hello extends JApplet {
+    public void paintComponent(Graphics g) {
+        g.drawString("Hello, world!", 65, 95);
+    }    
+}
+\end{minted}
+
+\subsubsection{C code}
+\begin{minted}{c}
+#include <stdio.h>
+int main() {
+   // printf() displays the string inside quotation
+   printf("Hello, World!");
+   return 0;
+}
+\end{minted}
+
+\subsubsection{MATLAB Code}
+\begin{minted}{matlab}
+function [phi, rp, D, dv] = gravityassist(mu,vinf_in)
+%INPUTS
+%   mu       - Gravitational parmater of the planet (G*M_p) in DU^3/TU^2
+%   v_inf_in - 3x1 incoming v infinity vector in perifocal frame components
+%
+%OUTPUTS
+%   phi - Turning angle (rad)
+%   rp  -  Closest approach to planet (DU)
+%   D   - Impact parameter (DU)
+%   dv  - net heliocentric delta v due to flyby (DU/TU)
+
+%find a and vinf from vis-viva equation
+a = -mu / (norm(vinf_in))^2 ;
+
+%find cos(theta) from geometry of the perifocal frame
+rpUnit = [1; 0; 0]; % 
+cosTheta = dot(rpUnit, -vinf_in)/norm(rpUnit)/norm(vinf_in) ;
+e = -1/cosTheta ;
+
+% find rp, phi, and D
+D = sqrt( mu^2 * (e^2 - 1) / norm(vinf_in)^4 ) ;
+rp = a*(1-e);
+phi = 2 * asin(1/(1+rp*norm(vinf_in)^2 / mu)) ;
+dv = 2 * norm(vinf_in) * sin(phi/2) ;
+
+end
+\end{minted}
+
+\subsubsection{Brainf**k}
+\begin{minted}{brainfuck}
+++++++++++[>+++++++>+++++++++++>++++++++++
+>+++>++++++++>+++ ++++++++<<<<<<-]>---.>+.
++++.>+.>>>--..<<++.>++.>+++.<<<--.>>>----.
+<<<++.<++.--.+++++++.>>.>++.<<.----.>>>++.
+\end{minted}
+
+\subsubsection{GNU Radio Blocks}
+Just include a screeshot of the GNU Radio blocks that you are using.
